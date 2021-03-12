@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shamba_records/register.dart';
-
-import 'components.dart';
+import 'locator.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -69,7 +68,9 @@ class LoginScreen extends StatelessWidget {
             alignment: Alignment.centerRight,
             margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Locator()));
+              },
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
               textColor: Colors.white,
               padding: const EdgeInsets.all(0),

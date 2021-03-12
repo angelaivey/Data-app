@@ -1,9 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import 'components.dart';
 import 'login.dart';
+import 'locator.dart';
 
 class RegisterScreen extends StatelessWidget {
+
+  // static const String idScreen = "register";
+  //
+  // TextEditingController nameTextEditingController = TextEditingController();
+  // TextEditingController phoneTextEditingController = TextEditingController();
+  // TextEditingController emailTextEditingController = TextEditingController();
+  // TextEditingController passwordTextEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -33,6 +41,7 @@ class RegisterScreen extends StatelessWidget {
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(horizontal: 40),
             child: TextField(
+              //controller: nameTextEditingController,
               decoration: InputDecoration(
                   labelText: "Name"
               ),
@@ -45,6 +54,7 @@ class RegisterScreen extends StatelessWidget {
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(horizontal: 40),
             child: TextField(
+              //controller: phoneTextEditingController,
               decoration: InputDecoration(
                   labelText: "Mobile Number"
               ),
@@ -57,9 +67,23 @@ class RegisterScreen extends StatelessWidget {
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(horizontal: 40),
             child: TextField(
+              //controller: emailTextEditingController,
               decoration: InputDecoration(
-                  labelText: "Username"
+                  labelText: "email"
               ),
+              // validator: (value){
+              //   if (value.isEmpty){
+              //     Pattern pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+              //     RegExp regex = new RegExp(pattern);
+              //     if (! regex.hasMatch(value)) {
+              //       return 'Please make sure your email is valid';
+              //     }else{
+              //       return null;
+              //     }
+              //   }else{
+              //     return null;
+              //   }
+              // },
             ),
           ),
 
@@ -69,6 +93,7 @@ class RegisterScreen extends StatelessWidget {
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(horizontal: 40),
             child: TextField(
+              //controller: passwordTextEditingController,
               decoration: InputDecoration(
                   labelText: "Password"
               ),
@@ -82,7 +107,10 @@ class RegisterScreen extends StatelessWidget {
             alignment: Alignment.centerRight,
             margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                //registerNewUser(context);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Locator()));
+              },
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
               textColor: Colors.white,
               padding: const EdgeInsets.all(0),
@@ -132,4 +160,21 @@ class RegisterScreen extends StatelessWidget {
       ),
     );
   }
+
+  // final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  //
+  // void registerNewUser(BuildContext context) async {
+  //   final firebaseUser = (
+  //     await _firebaseAuth.createUserWithEmailAndPassword(
+  //         email: emailTextEditingController.text,
+  //         password: passwordTextEditingController.text
+  //     )).user;
+  //   if(firebaseUser != null){
+  //     // save user info
+  //   }else{
+  //     //error occurred
+  //     //displayToastMessage('New user has not been created.', context);
+  //   }
+  // }
 }
+
